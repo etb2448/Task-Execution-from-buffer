@@ -1,8 +1,8 @@
 #include<iostream>
 using namespace std;
 
-// Temps d'arriver des donnÈes
-class AvantExecution // Class Avant Execution qui cree un tableau dynamique et recupere l'instant d'arriver de chaque donnÈe qui rentre en execution
+// Temps d'arriver des donn√©es
+class AvantExecution // Class Avant Execution qui cree un tableau dynamique et recupere l'instant d'arriver de chaque donn√©e qui rentre en execution
 {
 public:
 	AvantExecution(int cap);
@@ -29,8 +29,8 @@ int AvantExecution::getValue(int i) // fonction permettant de recuperer une vale
 {
 	return E[i];
 }
-// DurÈe d'execution des donnÈes
-class ApresExecution : public AvantExecution //Class Apres Execution qui cree un tableau dynamique et recuperer la durre de chaque donÈe en execution 
+// Dur√©e d'execution des donn√©es
+class ApresExecution : public AvantExecution //Class Apres Execution qui cree un tableau dynamique et recuperer la durre de chaque don√©e en execution 
 {
 public:
 	ApresExecution(int cap);
@@ -141,8 +141,8 @@ void BUFFER::Execution(int Tache) // Fonction permettant de faire la simulation
 
 	}
 	int i = 0;
-	int prochaineSortie = Apres.getValue(i); // Recuperer la premiËre valeur du Tableau Sortie et le mettre dans une varible 
-	while (i < Tache) // Tant qu'il ya encore de t‚che a faire 
+	int prochaineSortie = Apres.getValue(i); // Recuperer la premi√®re valeur du Tableau Sortie et le mettre dans une varible 
+	while (i < Tache) // Tant qu'il ya encore de t√¢che a faire 
 	{
 		if (estVide()) // Si le BUffer est vide 
 		{
@@ -153,25 +153,25 @@ void BUFFER::Execution(int Tache) // Fonction permettant de faire la simulation
 		}
 		while (!estPlein()) // Tant que le buffer n'est pas plein 
 		{
-			// Verifie si la donnÈe qui vient pour l'execution arrive avant ou apres la fin de l'exÈcution en cours
-			if (Avant.getValue(i) >= prochaineSortie) // Si la donnÈe arrive aprËs la fin de l'execution 
+			// Verifie si la donn√©e qui vient pour l'execution arrive avant ou apres la fin de l'ex√©cution en cours
+			if (Avant.getValue(i) >= prochaineSortie) // Si la donn√©e arrive apr√®s la fin de l'execution 
 			{
-				enfiler(Avant.getValue(i)); // Enfile la valeur de l'instant ‡ laquelle la donnÈe est arrivÈe
+				enfiler(Avant.getValue(i)); // Enfile la valeur de l'instant √† laquelle la donn√©e est arriv√©e
 				cout << Avant.getValue(i) << " ";
 				prochaineSortie = Avant.getValue(i) + Apres.getValue(i); // Incremente la prochaine sortie en faisant la somme de l'arriver de la donne a sa fin d'execution
 			}
 			else //Sinon
 			{
-				enfiler(prochaineSortie); // Enfile la duree de la derniere execution qui sera l'instant ‡ laquelle la prochaine donnÈe va commencer son exÈcution
+				enfiler(prochaineSortie); // Enfile la duree de la derniere execution qui sera l'instant √† laquelle la prochaine donn√©e va commencer son ex√©cution
 				cout << prochaineSortie << " "; // Et affiche la 
 				prochaineSortie += Apres.getValue(i); // Puis incremente cette duree par la duree  de la valeur qui vient dans le buffer
 			}
 			
 			i++;
 		}
-		if (Tache > 1) // Verifie s'il ya plus qu'une t‚che
+		if (Tache > 1) // Verifie s'il ya plus qu'une t√¢che
 		{
-			if (Avant.getValue(i) >= F[1] && Avant.getValue(i) > Avant.getValue(i-1)) // Verifie si la nouvelle donnÈe vient avant ou apres la fin de l'execution en cours et s'assure que la donne ne vient pas au moment que la donne en  attente
+			if (Avant.getValue(i) >= F[1] && Avant.getValue(i) > Avant.getValue(i-1)) // Verifie si la nouvelle donn√©e vient avant ou apres la fin de l'execution en cours et s'assure que la donne ne vient pas au moment que la donne en  attente
 			{
 				defiler(); 
 				if (Avant.getValue(i) >= prochaineSortie) // Si la donnee arrive apres ou au moment meme de la fin de l'execution en cours
@@ -180,16 +180,16 @@ void BUFFER::Execution(int Tache) // Fonction permettant de faire la simulation
 					cout << Avant.getValue(i) << " "; // Affiche son temps d'arriver
 					prochaineSortie = Avant.getValue(i) + Apres.getValue(i);
 				}
-				else // Sinon affiche le temps ‡ laquelle l'execution a pris fin
+				else // Sinon affiche le temps √† laquelle l'execution a pris fin
 				{
 					enfiler(prochaineSortie);
 					cout << prochaineSortie << " "; // Affiche le temps de la fin d'execution
 					prochaineSortie += Apres.getValue(i);
 				}
 			}
-			else // Sinon le BUFFER est encore  plein et il n'ya pas de place donc la tache ne sera pas exÈcuter 
+			else // Sinon le BUFFER est encore  plein et il n'ya pas de place donc la tache ne sera pas ex√©cuter 
 			{
-				cout << -1 << " "; // On affiche donc -1 pour identifier les t‚ches non exÈcuter
+				cout << -1 << " "; // On affiche donc -1 pour identifier les t√¢ches non ex√©cuter
 			}
 			i++;
 		}
@@ -197,8 +197,6 @@ void BUFFER::Execution(int Tache) // Fonction permettant de faire la simulation
 }
 int main()
 {
-	cout << "\t" << "\t" << "Thierno Mamadou Barry" << "\t" << "\t" << "NI: A00176409" << "\n" << "\n" << "\n" << "\n";
-
 	int capacite;
 	int Tache;
 	cin >> capacite;
